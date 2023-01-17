@@ -44,6 +44,9 @@ jobs:
 
     - name: 安装依赖项
       run: dotnet restore
+
+    - name: 执行单元测试
+      run: dotnet test
       
     - name: 为发布构建应用程序
       run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration 
