@@ -36,7 +36,7 @@ jobs:
     - name: Test
       run: dotnet test
 
-    - name: zip
+    - name: release.zip
       run: 7z a -r "D:/a/GreenOnions/GreenOnions/bin/release/eze/release.zip" "D:/a/GreenOnions/GreenOnions/bin/release/*"
 
     - name: debug.zip
