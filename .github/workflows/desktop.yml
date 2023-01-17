@@ -34,4 +34,17 @@ jobs:
       run: dotnet build
 
     - name: Test
-      run: dotnet test  
+      run: dotnet test
+
+    - name: zip
+      run: 7z a -r "GreenOnions/GreenOnions/bin/release/eze/release.zip" "GreenOnions/GreenOnions/bin/release/*"
+
+    - name: 自动释放
+      uses: marvinpinto/action-automatic-releases@v1.2.1
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "exe"
+        prerelease: true
+        title: "自动构建版本"
+        files: |
+          ./GreenOnions/GreenOnions/bin/release/eze/release.zip
