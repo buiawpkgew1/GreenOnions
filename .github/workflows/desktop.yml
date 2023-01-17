@@ -30,11 +30,8 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
-    - name: 将msbuild添加到路径
-      uses: microsoft/setup-msbuild@v1.1   
-      with:
-        msbuild-architecture: x64
-        vs-version: '17.4'
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.0.2
 
     # 安装 NuGet
     - name: Setup NuGet
