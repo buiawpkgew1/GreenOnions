@@ -51,7 +51,12 @@ jobs:
         Appx_Bundle_Platforms: x86|x64
         Appx_Package_Build_Mode: StoreUpload
         Configuration: ${{ matrix.configuration }}
-    
+        
+    # - name: 为发布构建应用程序
+    #   run: msbuild src\YourProjectFile.csproj -t:rebuild -verbosity:diag -property:Configuration=$env:Configuration
+    #   env:
+    #     Configuration: ${{ matrix.configuration }}
+
     # - name: release.zip
     #   run: 7z a -r "bin/release/net6.0-windows/release.zip" "/bin/release/*"
     - name: debug.zip
