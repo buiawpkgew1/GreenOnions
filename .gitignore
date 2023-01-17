@@ -1,3 +1,4 @@
 **/bin/
 **/obj/
 **/.vs/
+.github/workflows/dotnet-desktop.yml
