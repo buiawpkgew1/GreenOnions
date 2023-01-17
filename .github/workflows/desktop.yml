@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        configuration: [Debug, Release]
+        configuration: [Release]
 
     runs-on: windows-latest
     env:
@@ -32,19 +32,19 @@ jobs:
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v1.0.2
 
-    - name: 安装依赖项
-      run: dotnet restore
-
     - name: 执行单元测试
       run: dotnet test
 
-    - name: 为发布构建应用程序
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration 
+    - name: Build
+      run: dotnet build
 
-    # - name: release.zip
-    #   run: 7z a -r "D:/a/GreenOnions/GreenOnions/bin/release/eze/release.zip" "./bin/release/*"
-    - name: debug.zip
-      run: 7z a -r "bin/debug/net6.0-windows/net6.0-windows.zip" "bin/debug/net6.0-windows/*"
+    - name: 为发布构建应用程序
+      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=release
+
+    - name: release.zip
+      run: 7z a -r "bin/release/net6.0-windows/release.zip" "/bin/release/*"
+    # - name: debug.zip
+    #   run: 7z a -r "bin/debug/net6.0-windows/debug.zip" "bin/debug/net6.0-windows/*"
     - name: 自动释放
       uses: marvinpinto/action-automatic-releases@v1.2.1
       with:
@@ -55,3 +55,4 @@ jobs:
         files: |
           !./*/*/*/*/*/*/*/*.dll
           bin/debug/net6.0-windows/net6.0-windows.zip
+          bin/release/*/release.zip
