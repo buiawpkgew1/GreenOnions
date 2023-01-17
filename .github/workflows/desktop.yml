@@ -67,8 +67,9 @@ jobs:
     #   run: msbuild src\YourProjectFile.csproj -t:rebuild -verbosity:diag -property:Configuration=$env:Configuration
     #   env:
     #     Configuration: ${{ matrix.configuration }}
-    - name: debug.zip1
-      run: 7z a -r "bin/debug/net6.0-windows/debug1.zip" "**/obj/Debug/net6.0-windows/*"
+    
+    # - name: debug.zip1
+    #   run: 7z a -r "bin/debug/net6.0-windows/debug1.zip" "**/obj/Debug/net6.0-windows/*"
 
 
     # - name: release.zip
