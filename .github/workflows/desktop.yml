@@ -71,7 +71,6 @@ jobs:
     # - name: debug.zip1
     #   run: 7z a -r "bin/debug/net6.0-windows/debug1.zip" "**/obj/Debug/net6.0-windows/*"
 
-
     # - name: release.zip
     #   run: 7z a -r "bin/release/net6.0-windows/release.zip" "/bin/release/*"
     
