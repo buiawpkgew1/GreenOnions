@@ -8,9 +8,6 @@ on:
     - '**.cs'
     - '**.csproj'
 
-env:
-  DOTNET_VERSION: '6.0.401' # The .NET SDK version to use
-
 jobs:
   build:
 
@@ -27,7 +24,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
+        dotnet-version: 6.0.x
 
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v1.0.2
