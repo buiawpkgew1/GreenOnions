@@ -32,22 +32,12 @@ jobs:
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v1.0.2
 
-    # 安装 NuGet
-    - name: Setup NuGet
-      uses: nuget/setup-nuget@v1
-      with:
-        nuget-version: '5.x'    
-
-    # 还原 NuGet 包
-    - name: NuGet restore
-      run: nuget restore
-
     - name: 安装依赖项
       run: dotnet restore
 
     - name: 执行单元测试
       run: dotnet test
-      
+
     - name: 为发布构建应用程序
       run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration 
 
