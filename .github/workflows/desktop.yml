@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        configuration: [Release]
+        configuration: [Debug]
 
     runs-on: windows-latest
     env:
@@ -38,13 +38,16 @@ jobs:
     - name: Build
       run: dotnet build
 
-    - name: 为发布构建应用程序
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=release
+    # - name: 为发布构建应用程序1
+    #   run: msbuild $env:Solution_Name /t:Restore /p:Configuration=release 
 
-    - name: release.zip
-      run: 7z a -r "bin/release/net6.0-windows/release.zip" "/bin/release/*"
-    # - name: debug.zip
-    #   run: 7z a -r "bin/debug/net6.0-windows/debug.zip" "bin/debug/net6.0-windows/*"
+    - name: 为发布构建应用程序
+      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=Debug
+
+    # - name: release.zip
+    #   run: 7z a -r "bin/release/net6.0-windows/release.zip" "/bin/release/*"
+    - name: debug.zip
+      run: 7z a -r "bin/debug/net6.0-windows/debug.zip" "bin/debug/net6.0-windows/*"
     - name: 自动释放
       uses: marvinpinto/action-automatic-releases@v1.2.1
       with:
