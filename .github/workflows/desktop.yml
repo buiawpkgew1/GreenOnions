@@ -48,4 +48,4 @@ jobs:
         prerelease: true
         title: "自动构建版本"
         files: |
-          ./bin/*
+          D:\a\GreenOnions\GreenOnions\bin\*.dll
