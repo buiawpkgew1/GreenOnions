@@ -36,11 +36,10 @@ jobs:
     - name: Test
       run: dotnet test
 
-    - name: release.zip
-      run: 7z a -r "D:/a/GreenOnions/GreenOnions/bin/release/eze/release.zip" "./bin/release/*"
-
-    - name: debug.zip
-      run: 7z a -r "D:/a/GreenOnions/GreenOnions/bin/release/eze/debug.zip" "./bin/debug/*"
+    # - name: release.zip
+    #   run: 7z a -r "D:/a/GreenOnions/GreenOnions/bin/release/eze/release.zip" "./bin/release/*"
+    # - name: debug.zip
+    #   run: 7z a -r "D:/a/GreenOnions/GreenOnions/bin/release/eze/debug.zip" "./bin/debug/*"
     - name: 自动释放
       uses: marvinpinto/action-automatic-releases@v1.2.1
       with:
