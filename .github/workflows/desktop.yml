@@ -18,7 +18,6 @@ jobs:
       matrix:
         configuration: [Debug, Release]
 
-    name: build-${{matrix.os}}
     runs-on: windows-latest
     env:
       Solution_Name: GreenOnions.sln
