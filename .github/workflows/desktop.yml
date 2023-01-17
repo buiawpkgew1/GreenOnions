@@ -26,7 +26,15 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
+    # 安装 NuGet
+    - name: Setup NuGet
+      uses: nuget/setup-nuget@v1
+      with:
+        nuget-version: '5.x'    
 
+    # 还原 NuGet 包
+    - name: NuGet restore
+      run: nuget restore
     - name: Install dependencies
       run: dotnet restore
       
