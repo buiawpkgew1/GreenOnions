@@ -42,10 +42,10 @@ jobs:
     # - name: 为发布构建应用程序1
     #   run: msbuild $env:Solution_Name /t:Restore /p:Configuration=release 
 
-    - name: 恢复应用程序
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
-      env:
-        Configuration: ${{ matrix.configuration }}
+    # - name: 恢复应用程序
+    #   run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
+    #   env:
+    #     Configuration: ${{ matrix.configuration }}
     
     # 解码base 64编码的pfx并保存Signing_Certificate
     # - name: Decode the pfx
@@ -55,13 +55,13 @@ jobs:
     #     [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
 
     # 通过构建和打包Windows应用程序打包项目来创建应用程序包
-    - name: 创建应用程序包
-      run: msbuild $env:Wap_Project_Path /p:Configuration=$env:Configuration /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}
-      env:
-        Appx_Bundle: Always
-        Appx_Bundle_Platforms: x86|x64
-        Appx_Package_Build_Mode: StoreUpload
-        Configuration: ${{ matrix.configuration }}
+    # - name: 创建应用程序包
+    #   run: msbuild $env:Wap_Project_Path /p:Configuration=$env:Configuration /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}
+    #   env:
+    #     Appx_Bundle: Always
+    #     Appx_Bundle_Platforms: x86|x64
+    #     Appx_Package_Build_Mode: StoreUpload
+    #     Configuration: ${{ matrix.configuration }}
         
     # - name: 为发布构建应用程序
     #   run: msbuild src\YourProjectFile.csproj -t:rebuild -verbosity:diag -property:Configuration=$env:Configuration
