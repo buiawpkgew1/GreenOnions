@@ -26,6 +26,13 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
+
+    - name: 将msbuild添加到路径
+      uses: microsoft/setup-msbuild@v1.1   
+      with:
+        msbuild-architecture: x64
+        vs-version: '17.4'
+
     # 安装 NuGet
     - name: Setup NuGet
       uses: nuget/setup-nuget@v1
@@ -35,11 +42,12 @@ jobs:
     # 还原 NuGet 包
     - name: NuGet restore
       run: nuget restore
-    - name: Install dependencies
+
+    - name: 安装依赖项
       run: dotnet restore
       
-    - name: Build
-      run: dotnet build
+    - name: 为发布构建应用程序
+      run: msbuild src\YourProjectFile.csproj -t:rebuild -verbosity:diag -property:Configuration=Release  
 
     # - name: release.zip
     #   run: 7z a -r "D:/a/GreenOnions/GreenOnions/bin/release/eze/release.zip" "./bin/release/*"
