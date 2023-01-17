@@ -67,14 +67,15 @@ jobs:
     #   run: msbuild src\YourProjectFile.csproj -t:rebuild -verbosity:diag -property:Configuration=$env:Configuration
     #   env:
     #     Configuration: ${{ matrix.configuration }}
-    - name: debug.zip1
-      run: 7z a -r "bin/debug/net6.0-windows/debug1.zip" "obj/Debug/net6.0/*"
+    # - name: debug.zip1
+    #   run: 7z a -r "bin/debug/net6.0-windows/debug1.zip" "obj/Debug/net6.0/*"
 
 
     # - name: release.zip
     #   run: 7z a -r "bin/release/net6.0-windows/release.zip" "/bin/release/*"
-    - name: debug.zip
-      run: 7z a -r "bin/debug/net6.0-windows/debug.zip" "bin/debug/net6.0-windows/*"
+    
+    # - name: debug.zip
+    #   run: 7z a -r "bin/debug/net6.0-windows/debug.zip" "bin/debug/net6.0-windows/*"
     - name: 自动释放
       uses: marvinpinto/action-automatic-releases@v1.2.1
       with:
@@ -83,7 +84,7 @@ jobs:
         prerelease: true
         title: "自动构建版本"
         files: |
-          !./*/*/*/*/*/*/*/*.dll
+          **/obj/*.dll
           bin/debug/net6.0-windows/debug.zip
           bin/debug/net6.0-windows/debug1.zip
           bin/release/*/release.zip
