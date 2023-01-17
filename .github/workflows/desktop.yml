@@ -37,8 +37,10 @@ jobs:
       run: dotnet test
 
     - name: zip
-      run: 7z a -r "GreenOnions/GreenOnions/bin/release/eze/release.zip" "GreenOnions/GreenOnions/bin/release/*"
+      run: 7z a -r "D:/a/GreenOnions/GreenOnions/bin/release/eze/release.zip" "D:/a/GreenOnions/GreenOnions/bin/release/*"
 
+    - name: debug.zip
+      run: 7z a -r "D:/a/GreenOnions/GreenOnions/bin/release/eze/debug.zip" "D:/a/GreenOnions/GreenOnions/bin/debug/*"
     - name: 自动释放
       uses: marvinpinto/action-automatic-releases@v1.2.1
       with:
@@ -48,3 +50,4 @@ jobs:
         title: "自动构建版本"
         files: |
           ./GreenOnions/GreenOnions/bin/release/eze/release.zip
+          ./GreenOnions/GreenOnions/bin/release/eze/debug.zip
