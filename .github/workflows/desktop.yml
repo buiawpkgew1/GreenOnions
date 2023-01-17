@@ -14,11 +14,14 @@ env:
 jobs:
   build:
 
-    name: build-${{matrix.os}}
-    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest]
+        configuration: [Debug, Release]
+
+    name: build-${{matrix.os}}
+    runs-on: windows-latest
+    env:
+      Solution_Name: GreenOnions.sln
 
     steps:
     - uses: actions/checkout@v3
@@ -47,7 +50,7 @@ jobs:
       run: dotnet restore
       
     - name: 为发布构建应用程序
-      run: msbuild src\YourProjectFile.csproj -t:rebuild -verbosity:diag -property:Configuration=Release  
+      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration 
 
     # - name: release.zip
     #   run: 7z a -r "D:/a/GreenOnions/GreenOnions/bin/release/eze/release.zip" "./bin/release/*"
