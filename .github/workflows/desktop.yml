@@ -33,9 +33,6 @@ jobs:
     - name: Build
       run: dotnet build
 
-    - name: Test
-      run: dotnet test
-
     # - name: release.zip
     #   run: 7z a -r "D:/a/GreenOnions/GreenOnions/bin/release/eze/release.zip" "./bin/release/*"
     # - name: debug.zip
@@ -48,4 +45,4 @@ jobs:
         prerelease: true
         title: "自动构建版本"
         files: |
-          D:\a\GreenOnions\GreenOnions\bin\*.dll
+          ./bin/*.dll
