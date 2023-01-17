@@ -32,8 +32,8 @@ jobs:
     - name: 执行单元测试
       run: dotnet test
 
-    - name: Build
-      run: dotnet build
+    # - name: Build
+    #   run: dotnet build
 
     # - name: 为发布构建应用程序1
     #   run: msbuild $env:Solution_Name /t:Restore /p:Configuration=release 
