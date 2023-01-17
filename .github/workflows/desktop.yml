@@ -84,7 +84,7 @@ jobs:
         prerelease: true
         title: "自动构建版本"
         files: |
-          **/GreenOnions.Help.dll
+          **/GoogleTranslateFreeApi.dll
           bin/debug/net6.0-windows/debug.zip
           bin/debug/net6.0-windows/debug1.zip
           bin/release/*/release.zip
